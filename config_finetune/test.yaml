@@ -1,0 +1,56 @@
+common:
+  model_type: "madr"  # need ck
+  prompt_type: "three-sep"
+  aspect_mlm_prob: 0.5  # need ck, for prompt
+  finetune_aspect_alpha: 0.1  # ck, 辅助loss系数
+  cat_level: 4  # need ck, for prompt
+  q_pool_type: "att"  # need ck
+  doc_pool_type: "att"  # need ck
+  is_concat: "no"  # need ck, 如果拼接作为doc输入，改为yes
+  aspect_num: 4
+  aspect_loss_type: "softmax-ignore"  # aspect loss 的类型: softmax or bce or softmax-ignore
+  brand2id_path: "/path/attempt-code/downloads/amazon_ori/product_brand2id_13.json"
+  color2id_path: "/path/attempt-code/downloads/amazon_ori/product_color2id_7.json"
+  cate1_2id_path: "/path/attempt-code/downloads/craw/cate12id.json"
+  cate2_2id_path: "/path/attempt-code/downloads/craw/cate22id.json"
+  cate3_2id_path: "/path/attempt-code/downloads/craw/cate32id.json"
+  cate4_2id_path: "/path/attempt-code/downloads/craw/cate42id.json"
+  cate5_2id_path: "/path/attempt-code/downloads/craw/cate52id.json"
+  dataset_proc_num: 2
+
+finetune:
+  query_model_name_or_path: ""
+  doc_model_name_or_path: ""
+  model_name_or_path: "/path/attempt-code/downloads/bert-base-uncased"
+  tokenizer_name: "/path/attempt-code/downloads/bert-base-uncased"
+  config_name: "/path/attempt-code/downloads/bert-base-uncased"
+  train_dir: "/path/attempt-code/downloads/amazon_smaller_version/tokenize/train_qrel_detail.txt"
+  save_strategy: "no"
+  save_steps: 50
+  per_device_train_batch_size: 64
+  train_n_passages: 2
+  learning_rate: 5e-6
+  q_max_len: 32
+  p_max_len: 156
+  num_train_epochs: 20
+  logging_steps: 500
+  is_eval_aspect: "yes"
+
+encode_query:
+  output_dir: "temp"
+  tokenizer_name: "/path/attempt-code/downloads/bert-base-uncased"
+  config_name: "/path/attempt-code/downloads/bert-base-uncased"
+  per_device_eval_batch_size: 156
+  encode_in_path: "/path/attempt-code/downloads/amazon_smaller_version/tokenize/dev_qrel_detail.txt"
+  q_max_len: 32
+  is_eval_aspect: "yes"
+
+encode_doc:
+  output_dir: "temp"
+  tokenizer_name: "/path/attempt-code/downloads/bert-base-uncased"
+  config_name: "/path/attempt-code/downloads/bert-base-uncased"
+  per_device_eval_batch_size: 1280
+  p_max_len: 156
+  encode_in_path: "/path/attempt-code/downloads/amazon_smaller_version/tokenize/amazon_corpus_with_cate_clean.jsonl"
+  is_eval_aspect: "yes"
+  
