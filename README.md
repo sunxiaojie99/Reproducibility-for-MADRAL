@@ -1,4 +1,4 @@
-# MURAL: A Multi-Granularity-Aware Aspect Learning Model for Multi-Aspect Dense Retrieval
+# Reproducibility Analysis and Enhancements for Multi-Aspect Dense Retriever with Aspect Learning
 
 This repo contains the source code of our paper in ECIR 2024: Reproducibility Analysis and Enhancements for Multi-Aspect Dense Retriever with Aspect Learning
 
