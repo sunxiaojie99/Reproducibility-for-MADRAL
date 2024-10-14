@@ -8,7 +8,7 @@ This repo contains the source code of our paper in ECIR 2024: Reproducibility An
 
 ## Paper released
 
-hold on
+[Reproducibility Analysis and Enhancements for Multi-Aspect Dense Retriever with Aspect Learning](https://arxiv.org/pdf/2401.03648)
 
 ## Dataset released
 
